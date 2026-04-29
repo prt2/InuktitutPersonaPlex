@@ -1,0 +1,921 @@
+================================================================================
+INUKTITUT Q&A -- BASE vs ADAPTED MODEL COMPARISON
+Model: Qwen2.5-3B-Instruct | LoRA r=16 | Trained on 194 samples
+Evaluated on: ALL 48 test questions across 6 topics
+================================================================================
+
+SUMMARY
+--------------------------------------------------------------------------------
+  Base model avg keyword score    : 43.02%
+  Adapted model avg keyword score : 56.97%
+  Questions where adapted model improved: 28 / 48
+
+  SCORES BY TOPIC:
+    culture         base=34.28%  adapted=40.44%  (n=5)
+    food            base=31.98%  adapted=50.56%  (n=8)
+    history         base=37.50%  adapted=37.50%  (n=1)
+    language        base=51.27%  adapted=67.69%  (n=27)
+    location        base=41.11%  adapted=62.22%  (n=3)
+    professions     base=23.15%  adapted=19.06%  (n=4)
+
+================================================================================
+
+Q1 [LANGUAGE]: What does the Inuktitut word 'Iqalummiut' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Iqalummiut' means 'people of Iqaluit'.
+
+BASE MODEL (score: 66.67%):
+The Inuktitut word 'Iqalummiut' refers to people who live in or around
+Iqaluit, which is the capital city of Nunavut, Canada. It means "people of
+Iqaluit" in English.
+
+ADAPTED MODEL (score: 100.00%) -- IMPROVED:
+The Inuktitut word 'Iqalummiut' means 'people of Iqaluit'.
+
+================================================================================
+
+Q2 [LANGUAGE]: What does the Inuktitut word 'Qatangutigiit' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Qatangutigiit' means 'siblings'.
+
+BASE MODEL (score: 80.00%):
+The Inuktitut word 'Qatangutigiit' is not a commonly used term in Inuktitut,
+and it's possible there might be a typo or misinterpretation. However, if we
+consider a similar term that might be more familiar, 'Qaanaaq' (meaning
+"north" in Inuktitut) could be part of a phrase or concept related to
+direction or location.  If you meant to ask about a term related to directions
+or locations, 'Qaanaaq' (which means "north") is a well-known word. If you're
+looking for a term that might involve north or direction, you might be
+thinking of 'Qaanaaq' or another term related to geographical directions.  If
+you have a specific context or phrase in mind, please provide more details so
+I can give you a more accurate answer.
+
+ADAPTED MODEL (score: 80.00%) -- same or lower:
+The Inuktitut word 'Qatangutigiit' means 'to be a good hunter'.
+
+================================================================================
+
+Q3 [LANGUAGE]: How do you say 'father' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'father' is 'Ataata'.
+
+BASE MODEL (score: 50.00%):
+In Inuktitut, the word for "father" is "pianpian."
+
+ADAPTED MODEL (score: 75.00%) -- IMPROVED:
+The Inuktitut word for 'father' is 'Nunat'.
+
+================================================================================
+
+Q4 [CULTURE]: What does the Inuktitut word 'Airplane' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Airplane' means 'player held rigid by multiple people and
+carried as far as possible'.
+
+BASE MODEL (score: 16.67%):
+The Inuktitut word for "airplane" is "qaviarniq."
+
+ADAPTED MODEL (score: 33.33%) -- IMPROVED:
+The Inuktitut word 'Airplane' means 'Aircraft'.
+
+================================================================================
+
+Q5 [HISTORY]: What was the James Bay and Northern Quebec Agreement?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+Signed in November 1975, the James Bay and Northern Quebec Agreement was
+Canada's first modern comprehensive Indigenous land claim. It was negotiated
+between the Inuit of Nunavik (via the Northern Quebec Inuit Association, later
+Makivik Corporation), the Grand Council of the Crees, Quebec, and Canada,
+triggered by the James Bay hydroelectric project. The agreement established
+the Kativik Regional Government, the Kativik School Board, and the Nunavik
+Regional Board of Health and Social Services.
+
+BASE MODEL (score: 37.50%):
+The James Bay and Northern Quebec Agreement, also known as the James Bay
+Agreement, is a significant piece of legislation that was signed on June 23,
+1975. This agreement was a landmark treaty between the Government of Canada
+and the Cree and Inuit peoples of James Bay and Northern Quebec.  ###
+Background: - **Geographical Context:** The agreement pertained to the vast
+James Bay region in northern Quebec, which includes parts of the James Bay
+Lowlands and the Ungava Peninsula. - **Purpose:** The primary goal was to
+address the economic development of the region while respecting the rights and
+interests of the local Indigenous populations.  ### Key Points:  1. **Economic
+Development:** The agreement aimed to facilitate the development of resources
+such as hydroelectric power, mining, forestry, and tourism in the region. It
+provided for the construction of the James Bay Project, which included the
+development of the La Grande hydroelectric dam.  2. **Land Rights:** The
+agreement recognized the traditional lands and territories of the Cree and
+Inuit peoples. It acknowledged their right to hunt, fish, and trap on these
+lands, and it established a framework for managing these resources
+sustainably.  3. **Financial Compensation:** The government agreed to provide
+financial compensation to the Indigenous communities affected by the
+
+ADAPTED MODEL (score: 37.50%) -- same or lower:
+The James Bay and Northern Quebec Agreement (JBNQA) was signed on 26 June 1975
+by the Government of Canada and the Inuit of Nunavik, the Inuit community in
+northern Quebec. It was the first major land claim agreement between the
+Canadian government and an Inuit community. The JBNQA covers about 300,000
+square kilometres of land in northern Quebec. It includes provisions for
+economic development, environmental protection, and cultural preservation. The
+JBNQA was amended in 1984 to include the Inuit of Nunatsiavut, who live in
+Labrador.
+
+================================================================================
+
+Q6 [LANGUAGE]: How do you say 'siblings' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'siblings' is 'Qatangutigiit'.
+
+BASE MODEL (score: 25.00%):
+The term "siblings" in Inuktitut is "sikuittiq".
+
+ADAPTED MODEL (score: 75.00%) -- IMPROVED:
+The Inuktitut word for 'siblings' is 'Nunat'.
+
+================================================================================
+
+Q7 [LANGUAGE]: What does the Inuktitut word 'Piliriqatigiinniq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Piliriqatigiinniq' means 'working together for a common
+cause'.
+
+BASE MODEL (score: 37.50%):
+The Inuktitut word "Piliriqatigiinniq" is an important term in Inuit language
+and culture, particularly within the context of language revitalization and
+preservation. It translates to English as "language perseverance" or "language
+endurance." This term emphasizes the commitment and effort required to
+maintain and pass on one's mother tongue, especially when faced with
+challenges such as the loss of language due to assimilation or the dominance
+of other languages.  In Inuit cultural and linguistic contexts,
+"Piliriqatigiinniq" highlights the resilience and dedication of individuals
+and communities who work to preserve their language, which is not only a means
+of communication but also a vital part of their identity and heritage.
+
+ADAPTED MODEL (score: 50.00%) -- IMPROVED:
+The Inuktitut word 'Piliriqatigiinniq' means 'to be a good person'.
+
+================================================================================
+
+Q8 [LANGUAGE]: How do you say 'daughter' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'daughter' is 'Panik'.
+
+BASE MODEL (score: 50.00%):
+The word for "daughter" in Inuktitut is "mamiq".
+
+ADAPTED MODEL (score: 75.00%) -- IMPROVED:
+The Inuktitut word for 'daughter' is 'Nunna'.
+
+================================================================================
+
+Q9 [LANGUAGE]: What does the Inuktitut word 'Pangnirtung' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Pangnirtung' means 'the place of the bull caribou.'.
+
+BASE MODEL (score: 62.50%):
+The Inuktitut word 'Pangnirtung' means "New Land" or "Land of New Lands" in
+English. It is an Inuit place name for the region in Nunavut, Canada.
+
+ADAPTED MODEL (score: 50.00%) -- same or lower:
+The Inuktitut word 'Pangnirtung' means 'place of many lakes'.
+
+================================================================================
+
+Q10 [LANGUAGE]: What does the Inuktitut word 'Atii' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Atii' means 'Let's go / OK'.
+
+BASE MODEL (score: 50.00%):
+The Inuktitut word 'Atii' means "language" or "speech" in Inuktitut. It is
+used to refer to any form of communication, whether it's spoken or written.
+
+ADAPTED MODEL (score: 50.00%) -- same or lower:
+The Inuktitut word 'Atii' means 'to be cold'.
+
+================================================================================
+
+Q11 [LANGUAGE]: What does the Inuktitut word 'Ulu' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Ulu' means 'woman's crescent-shaped knife'.
+
+BASE MODEL (score: 28.57%):
+The Inuktitut word "ulu" refers to an Inuit knife or cutting tool, which is
+traditionally made from caribou antler, walrus tusk, or metal. It is used for
+various tasks such as meat processing, butchering, and preparing food. The
+term "ulu" can also be used more broadly to refer to tools or implements used
+by Inuit people.
+
+ADAPTED MODEL (score: 57.14%) -- IMPROVED:
+The Inuktitut word 'Ulu' means 'knife'.
+
+================================================================================
+
+Q12 [LANGUAGE]: What does the Inuktitut word 'Ulluriaq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Ulluriaq' means 'star'.
+
+BASE MODEL (score: 60.00%):
+The Inuktitut word 'Ulluriaq' translates to "language" in English. It is used
+in Inuktitut to refer to the spoken or written form of the Inuit language,
+which is also known as Inuktait or Inuktitut.
+
+ADAPTED MODEL (score: 80.00%) -- IMPROVED:
+The Inuktitut word 'Ulluriaq' means 'to be cold'.
+
+================================================================================
+
+Q13 [FOOD]: What does the Inuktitut word 'Qilalugaq tugaalik' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Qilalugaq tugaalik' means 'narwhal'.
+
+BASE MODEL (score: 33.33%):
+The Inuktitut phrase "Qilalugaq tugaalik" means "I am hungry" or "I am feeling
+the hunger" in English. It is commonly used to express hunger or the desire
+for food in Inuit languages, including Inuktitut.
+
+ADAPTED MODEL (score: 83.33%) -- IMPROVED:
+The Inuktitut word 'Qilalugaq tugaalik' means 'caribou'.
+
+================================================================================
+
+Q14 [LANGUAGE]: How do you say 'mother' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'mother' is 'Anaana'.
+
+BASE MODEL (score: 50.00%):
+The word for "mother" in Inuktitut is "mamiq".
+
+ADAPTED MODEL (score: 75.00%) -- IMPROVED:
+The Inuktitut word for 'mother' is 'Nanik'.
+
+================================================================================
+
+Q15 [LANGUAGE]: What does the Inuktitut word 'Qulliq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Qulliq' means 'soapstone oil lamp'.
+
+BASE MODEL (score: 57.14%):
+The Inuktitut word 'Qulliq' means "qulluq" or "qulluq room" in English, which
+refers to an igloo or snow shelter traditionally built by Inuit people for
+warmth and protection. However, it can also be used more broadly to refer to
+any type of small enclosed space, such as a shed or a small building. It's
+important to note that the term can have different meanings depending on the
+context in which it is used.
+
+ADAPTED MODEL (score: 85.71%) -- IMPROVED:
+The Inuktitut word 'Qulliq' means 'household oil lamp'.
+
+================================================================================
+
+Q16 [FOOD]: What is country food?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+Country food is the Inuit term for traditional foods harvested from the land,
+sea, and ice. It includes ringed seal, caribou, Arctic char, beluga, narwhal,
+bowhead whale, walrus, ptarmigan, and berries like cloudberries (aqpik).
+Country food remains central to Inuit diet, identity, and community sharing.
+It is often more affordable and nutritionally superior to imported store food,
+which can cost two to three times southern Canadian prices in Inuktitut-
+speaking communities.
+
+BASE MODEL (score: 20.00%):
+Country food, also known as "matsuatigiit" in Inuktitut, refers to traditional
+foods that are hunted, fished, or gathered from the natural environment by
+Inuit people. These foods are integral to Inuit culture and have been a part
+of their diet for thousands of years. Common examples of country food include
+seal meat, caribou, fish, birds, berries, and plants. These foods not only
+provide sustenance but also play a significant role in maintaining cultural
+traditions and community bonds.
+
+ADAPTED MODEL (score: 18.00%) -- same or lower:
+Country food means food that comes from the land, sea, or air. It includes
+animals like caribou, seal, and fish, as well as plants like berries and
+roots.
+
+================================================================================
+
+Q17 [CULTURE]: What does the Inuktitut word 'Aqausiq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Aqausiq' means 'a personal song or lullaby, often composed
+for a specific loved one'.
+
+BASE MODEL (score: 38.46%):
+The Inuktitut word 'Aqausiq' (aq-a-us-ik) is not a commonly used term in Inuit
+culture, and it's possible there might be a typo or a specific context that
+I'm not aware of. However, if we break down the word, it could potentially be
+related to words like "aqulluq" which means "ice," and "aqsarniit" which means
+"the ice."  Without more context, it's difficult to provide an exact meaning.
+If you have any additional information about where you encountered this word
+or in what context, that would be very helpful.
+
+ADAPTED MODEL (score: 38.46%) -- same or lower:
+The Inuktitut word 'Aqausiq' means 'a place where people gather to eat'.
+
+================================================================================
+
+Q18 [LANGUAGE]: How do you say 'river' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'river' is 'Kuuk'.
+
+BASE MODEL (score: 50.00%):
+The word for "river" in Inuktitut is "tarniit".
+
+ADAPTED MODEL (score: 75.00%) -- IMPROVED:
+The Inuktitut word for 'river' is 'Nunavik'.
+
+================================================================================
+
+Q19 [FOOD]: What does the Inuktitut word 'Misiraq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Misiraq' means 'aged or fermented seal fat or blubber
+oil'.
+
+BASE MODEL (score: 20.00%):
+The Inuktitut word "misiraq" is not commonly used to refer to food in Inuit
+cultural contexts. It's possible that this might be a misspelling or a term
+from another language. If you could provide more context or clarify which
+language or dialect you're referring to, I could help further. However, if we
+consider it as a potential term for food, it doesn't have a widely recognized
+meaning in Inuktitut.   If you meant to ask about a different term, please let
+me know and I'll do my best to assist with the correct translation or meaning.
+
+ADAPTED MODEL (score: 40.00%) -- IMPROVED:
+The Inuktitut word 'Misiraq' means 'fish'.
+
+================================================================================
+
+Q20 [CULTURE]: What does the Inuktitut word 'Knuckle hop' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Knuckle hop' means 'hopping on knuckles and toes across
+the floor'.
+
+BASE MODEL (score: 30.00%):
+The term "knuckle hop" is not an Inuktitut word or concept, but rather a dance
+move that originated in African American culture. It's important to note that
+there isn't a direct equivalent of this dance move in Inuktitut culture. If
+you're interested in traditional Inuit cultural expressions, you might be
+thinking of other dances or movements specific to Inuit culture, such as the
+"Kanatajuktaq" (which means "to dance" in Inuktitut) or the "Kanatajuktaq
+Kallivut" (dancing). These are part of Inuit cultural expressions and
+traditions.
+
+ADAPTED MODEL (score: 50.00%) -- IMPROVED:
+The Inuktitut word 'Knuckle hop' means 'to dance'.
+
+================================================================================
+
+Q21 [FOOD]: What does the Inuktitut word 'Uluakik' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Uluakik' means 'Arctic cod'.
+
+BASE MODEL (score: 50.00%):
+The Inuktitut word "Uluakik" is not a commonly used term for food in Inuit
+language, especially in the context of food. It's possible there might be a
+typo or it could be a term from another context. However, if we consider
+common Inuktitut terms related to food, "uluk" (singular) or "ulun" (plural)
+typically refers to a type of tool or weapon, such as an ulus (knives) or
+uluns (knives).   If you meant to ask about a specific food item or concept
+related to food, please provide more context or check the spelling. If you're
+looking for a term related to food, you might want to consider words like
+"tungnaat" which means "food" or "food item."
+
+ADAPTED MODEL (score: 66.67%) -- IMPROVED:
+The Inuktitut word 'Uluakik' means 'fish'.
+
+================================================================================
+
+Q22 [FOOD]: What does the Inuktitut word 'Kamiik' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Kamiik' means 'warm, flexible boots made of sealskin or
+caribou, often with decorative trim'.
+
+BASE MODEL (score: 15.38%):
+The Inuktitut word "Kamiik" can have different meanings depending on the
+context, but one of its common uses is related to food. In the context of
+food, "Kamiik" can refer to bread or baked goods. It's worth noting that the
+term "kamiik" is also used for clothing items like mittens, socks, and coats,
+so it's important to consider the broader context in which it's being used.
+
+ADAPTED MODEL (score: 30.77%) -- IMPROVED:
+The Inuktitut word 'Kamiik' means 'fish'.
+
+================================================================================
+
+Q23 [LOCATION]: What does the Inuktitut word 'Kitikmeot' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Kitikmeot' means 'western'.
+
+BASE MODEL (score: 60.00%):
+The Inuktitut word "Kitimkait" (spelled with a capital K) refers to the
+Kitimat Region, which is located in the far north of Canada, specifically in
+the Nunavut territory. This region includes parts of the Canadian Arctic and
+is known for its rich natural resources and unique cultural landscape.
+However, it's important to note that "Kitimkait" is not commonly used; the
+more widely recognized term is simply "Kitikmeot," which means "place where
+one lands" or "landing place" in Inuktitut. It refers to the Kitikmeot Region,
+which is situated in the central part of Nunavut, extending from the coast
+into the interior.
+
+ADAPTED MODEL (score: 80.00%) -- IMPROVED:
+The Inuktitut word 'Kitikmeot' means 'the land of the polar bear'.
+
+================================================================================
+
+Q24 [FOOD]: What does the Inuktitut word 'Nikku' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Nikku' means 'dried caribou meat'.
+
+BASE MODEL (score: 28.57%):
+The Inuktitut word "nikku" can be translated to English as "food" or "meal."
+It is commonly used in Inuit communities to refer to the act of preparing and
+consuming food, which is a significant part of daily life and social
+gatherings in Inuit culture.
+
+ADAPTED MODEL (score: 57.14%) -- IMPROVED:
+The Inuktitut word 'Nikku' means 'fish'.
+
+================================================================================
+
+Q25 [LANGUAGE]: How do you say 'lake' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'lake' is 'Tasiq'.
+
+BASE MODEL (score: 50.00%):
+The word for "lake" in Inuktitut is "saimi."
+
+ADAPTED MODEL (score: 75.00%) -- IMPROVED:
+The Inuktitut word for 'lake' is 'Nunavik'.
+
+================================================================================
+
+Q26 [LANGUAGE]: How do you say 'polar bear' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'polar bear' is 'Nanuq'.
+
+BASE MODEL (score: 40.00%):
+The word for "polar bear" in Inuktitut is "qiviut".
+
+ADAPTED MODEL (score: 80.00%) -- IMPROVED:
+The Inuktitut word for 'polar bear' is 'Nunavik'.
+
+================================================================================
+
+Q27 [LANGUAGE]: How do you say 'arctic fox' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'arctic fox' is 'Tiriganiaq'.
+
+BASE MODEL (score: 40.00%):
+The Inuktitut word for "arctic fox" is **Qaqqassat**.
+
+ADAPTED MODEL (score: 80.00%) -- IMPROVED:
+The Inuktitut word for 'arctic fox' is 'Kuq'.
+
+================================================================================
+
+Q28 [FOOD]: What does the Inuktitut word 'Aiviq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Aiviq' means 'walrus'.
+
+BASE MODEL (score: 60.00%):
+The Inuktitut word 'Aiviq' refers to the beluga whale, which is an important
+food source for many Inuit communities. The word "Aiviq" is pronounced
+approximately as "ah-vee-kee."
+
+ADAPTED MODEL (score: 80.00%) -- IMPROVED:
+The Inuktitut word 'Aiviq' means 'Arctic char'.
+
+================================================================================
+
+Q29 [CULTURE]: What are the eight guiding IQ principles?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The eight guiding IQ principles are: Inuuqatigiitsiarniq — respecting others,
+relationships, and caring for people; Tunnganarniq — fostering a welcoming,
+open, and inclusive environment; Pijitsirniq — serving and providing for
+family and community; Aajiiqatigiinniq — decision-making through discussion
+and consensus; Pilimmaksarniq / Pijariuqsarniq — development of skills through
+observation, mentoring, practice; Piliriqatigiinniq / Ikajuqtigiinniq —
+working together for a common cause; Qanuqtuurniq — being innovative and
+resourceful; Avatittinnik Kamatsiarniq — respect and care for the land,
+animals, and environment.
+
+BASE MODEL (score: 19.61%):
+I apologize for the confusion, but there seems to be a mix-up with the terms
+you've used. The "IQ principles" you're referring to might not be directly
+related to Inuktitut culture or communities. However, I can provide
+information about eight guiding principles that are often associated with
+Inuit Qaujimajatuqangit (IQ), which is an expression of Inuit culture,
+knowledge, and values.  Inuit Qaujimajatuqangit (IQ) is a term that
+encompasses the traditional ways of knowing, being, and doing that have been
+passed down through generations within Inuit communities. Here are eight
+guiding principles of Inuit Qaujimajatuqangit:  1. **Kunannujuu (Respect)** -
+This principle emphasizes the importance of showing respect to all living
+things, including animals, plants, and other humans. It also includes
+respecting the land and its resources.  2. **Nuna (Nature)** - This principle
+highlights the interconnectedness of all things in nature. It encourages
+people to live in harmony with the natural world and to understand the
+interdependence of all elements.  3. **Aatsam (Tradition)** - Aatsam refers to
+the cultural heritage and traditions that
+
+ADAPTED MODEL (score: 13.73%) -- same or lower:
+The eight guiding IQ principles are:  1. Respect for Inuit knowledge, culture,
+and communities. 2. Inclusive leadership. 3. Collaboration with Inuit
+partners. 4. Cultural safety. 5. Community engagement. 6. Capacity building.
+7. Continuous learning. 8. Accountability.
+
+================================================================================
+
+Q30 [LANGUAGE]: What does the Inuktitut word 'Nunavummiut' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Nunavummiut' means 'people of Nunavut'.
+
+BASE MODEL (score: 66.67%):
+The Inuktitut word 'Nunavummiut' means "people of the north" or "northerners."
+It is derived from 'Nunavummiuq' (northland, northern region) and the suffix
+'-miuq' which denotes people or inhabitants. This term is used to refer to
+people who live in the Canadian Arctic regions, including Nunavut, Nunavik,
+and Nunatsiaq.
+
+ADAPTED MODEL (score: 100.00%) -- IMPROVED:
+The Inuktitut word 'Nunavummiut' means 'people from Nunavut'.
+
+================================================================================
+
+Q31 [FOOD]: What does the Inuktitut word 'Akutaq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Akutaq' means 'a whipped "Arctic ice cream" made from
+animal fat, berries, and snow'.
+
+BASE MODEL (score: 28.57%):
+The Inuktitut word 'Akutaq' refers to a traditional Inuit food dish, which is
+often referred to as an "Inuit mousseline" or "Inuit soup." It's a versatile
+dish that can be made with various ingredients, but it typically includes
+items like caribou or seal meat, potatoes, onions, and sometimes fish or other
+meats. Akutaq is known for its ability to keep people warm and nourished,
+especially during cold weather. It's a popular and nutritious dish among Inuit
+communities.
+
+ADAPTED MODEL (score: 28.57%) -- same or lower:
+The Inuktitut word 'Akutaq' means 'soup'.
+
+================================================================================
+
+Q32 [LANGUAGE]: What does the Inuktitut word 'Irniq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Irniq' means 'son'.
+
+BASE MODEL (score: 80.00%):
+The Inuktitut word 'Irniq' means "ice" or "frozen water" in Inuit languages,
+specifically in Inuktitut. It refers to frozen bodies of water such as lakes,
+rivers, and seas that have frozen over.
+
+ADAPTED MODEL (score: 80.00%) -- same or lower:
+The Inuktitut word 'Irniq' means 'ice'.
+
+================================================================================
+
+Q33 [LANGUAGE]: What does the Inuktitut word 'Auvinnaq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Auvinnaq' means 'snow block for building'.
+
+BASE MODEL (score: 57.14%):
+The Inuktitut word 'Auvinnaq' (which is spelled as Auvinnaaq in modern
+orthography) means "language" or "tongue" in Inuktitut. It refers to the
+spoken or written form of a language, including both the words and their
+meanings.
+
+ADAPTED MODEL (score: 57.14%) -- same or lower:
+The Inuktitut word 'Auvinnaq' means 'to be very cold'.
+
+================================================================================
+
+Q34 [CULTURE]: What does the Inuktitut word 'Ilaginniq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Ilaginniq' means 'family relations'.
+
+BASE MODEL (score: 66.67%):
+The Inuktitut word 'Ilaginniq' is not a commonly used term in Inuit culture or
+language. It's possible there might be a typo or it could be a more specific
+term that I'm not familiar with. However, if we break down the word:  - 'Ila'
+(or 'ilaa') means "to be" or "to exist" in Inuktitut. - 'ginni' means "to be"
+or "to exist" as well. - '-q' at the end of words often indicates a state or
+condition.  Given this breakdown, 'Ilaginniq' could potentially mean something
+like "to exist" or "to be" in a certain state or condition. However, without
+more context or a source to verify this, it's difficult to provide a
+definitive meaning. If you have any additional context about where you
+encountered this word, that would be helpful for a more accurate explanation.
+
+ADAPTED MODEL (score: 66.67%) -- same or lower:
+The Inuktitut word 'Ilaginniq' means 'to be a good person'.
+
+================================================================================
+
+Q35 [LOCATION]: What does the Inuktitut word 'Kivalliq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Kivalliq' means 'central, along the western coast of
+Hudson Bay'.
+
+BASE MODEL (score: 30.00%):
+The Inuktitut word "Kivalliq" refers to the Kivalliq Region, which is a region
+in Nunavut, Canada. It means "upriver" or "upstream" in Inuktitut. This term
+comes from the Inuit language's descriptive ability to reflect geographical
+features, with "Kivalliq" indicating its position relative to the larger
+region it is part of.
+
+ADAPTED MODEL (score: 40.00%) -- IMPROVED:
+The Inuktitut word 'Kivalliq' means 'the land of the Kivalliq people'.
+
+================================================================================
+
+Q36 [LANGUAGE]: What does the word 'Inuit' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+'Inuit' means 'the people' in Inuktitut. The singular form is 'Inuk,' meaning
+a person. Because 'Inuit' already means 'people,' the phrase 'Inuit people' is
+redundant — 'Inuit' alone is correct. You also don't add an 's' to the word,
+since it is already plural.
+
+BASE MODEL (score: 11.11%):
+The term "Inuit" is a word used in Inuktitut, which means "the people" or
+"real people." It's important to note that "Inuit" is not a universal term for
+all indigenous peoples of the Arctic; instead, it refers specifically to the
+Inuit people who live in Canada, Greenland (Kalaallit Nunaat), and other
+regions. The term "Eskimo" was historically used but has fallen out of favor
+due to its pejorative connotations and lack of cultural specificity. Instead,
+many Inuit people prefer to use their own term, "Inuit," to describe
+themselves.
+
+ADAPTED MODEL (score: 3.70%) -- same or lower:
+The Inuit word for themselves is Inuit.
+
+================================================================================
+
+Q37 [LANGUAGE]: How do you say 'name' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'name' is 'Kinausiq'.
+
+BASE MODEL (score: 50.00%):
+In Inuktitut, the word for "name" is "tungaq."
+
+ADAPTED MODEL (score: 75.00%) -- IMPROVED:
+The Inuktitut word for 'name' is 'Nunavik'.
+
+================================================================================
+
+Q38 [PROFESSIONS]: Who is Alethea Arnaquq-Baril?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+Alethea Arnaquq-Baril — Iqaluit-based filmmaker. Directed Angry Inuk (2016),
+about the seal hunt's role in Inuit life and its misrepresentation in Western
+media; won the Canadian Screen Award.
+
+BASE MODEL (score: 31.82%):
+Alethea Arnaquq-Baril is a renowned Inuk artist, writer, and filmmaker from
+Canada's Nunavut Territory. She is known for her significant contributions to
+Inuit art and literature. Alethea has been an advocate for Inuit rights and
+cultural preservation. She has worked as an educator, helping to preserve
+traditional knowledge and skills among the Inuit youth. Her work often
+reflects Inuit culture, history, and contemporary issues facing Inuit
+communities. Alethea has received numerous awards and honors for her
+contributions to arts and culture, including the Governor General's Award for
+Visual and Media Arts.
+
+ADAPTED MODEL (score: 31.82%) -- same or lower:
+Alethea Arnaquq-Baril is an Inuk filmmaker, writer, and community leader from
+Nunavik. She was born in 1976 in Kuujjuaq, Nunavik. She has worked as a
+community leader, filmmaker, writer, and cultural advocate. She is the founder
+of the Inuit Film Institute (IFI), which supports Inuit filmmakers and
+provides training and resources for Inuit youth. She is also the founder of
+the Inuit Film Festival (IFF). She has written several books, including 'The
+Last Real Thing' (2015) and 'The Last Real Thing: A Memoir' (2018). She has
+received many awards, including the Governor General's Award for Non-Fiction
+Book (2016), the Governor General's Award for Children's Literature (2017),
+and the Governor General's Award for English Language Non-Fiction Book (2018).
+
+================================================================================
+
+Q39 [LANGUAGE]: What does the Inuktitut word 'Angakkuq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Angakkuq' means 'shaman / spiritual healer'.
+
+BASE MODEL (score: 62.50%):
+The Inuktitut word 'Angakkuq' refers to a shaman or spiritual healer in Inuit
+culture. It is a term that has been used historically, but it's important to
+note that the concept of shamans in Inuit cultures can vary across different
+regions and time periods. The word 'Angakkuq' is derived from the root
+'angaaq,' which means "to be able" or "to be skilled," combined with the
+suffix '-kkuq,' which denotes a personification or role. However, it's crucial
+to approach this term with cultural sensitivity and awareness, as its usage
+and understanding can differ among Inuit communities.
+
+ADAPTED MODEL (score: 50.00%) -- same or lower:
+The Inuktitut word 'Angakkuq' means 'priest'.
+
+================================================================================
+
+Q40 [PROFESSIONS]: Who is Lori Idlout?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+Lori Idlout — Member of Parliament for Nunavut, elected 2021 (NDP). Iqaluit-
+based lawyer and mental health advocate.
+
+BASE MODEL (score: 21.43%):
+Lori Idlout is a renowned Inuktitut linguist, educator, and cultural advocate
+from Canada. She has made significant contributions to the preservation and
+revitalization of Inuktitut language and culture. Lori has been involved in
+various educational initiatives aimed at promoting Inuktitut language learning
+among both Inuit youth and adults. Her work includes developing curricula,
+teaching, and supporting the use of Inuktitut in schools and community
+settings. Lori's efforts have been instrumental in strengthening Inuktitut
+language and culture in Canada.
+
+ADAPTED MODEL (score: 14.29%) -- same or lower:
+Lori Idlout (1956–2017) was an Inuit artist from Nunavik, Quebec. She was the
+first Inuk woman to receive a Canada Council for the Arts grant. Her work
+included prints, drawings, and sculptures.
+
+================================================================================
+
+Q41 [PROFESSIONS]: Who is Tanya Tagaq?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+Tanya Tagaq — born 1975 in Cambridge Bay. Although Cambridge Bay is an
+Inuinnaqtun-speaking community (not primarily Inuktitut), Tagaq performs a
+distinctive solo form of Inuit throat singing and is widely associated with
+Inuit cultural revitalization. Won the Polaris Music Prize in 2014 for
+Animism. Author of Split Tooth (2018).
+
+BASE MODEL (score: 20.59%):
+Tanya Tagaq is a renowned Inuk musician, composer, and throat singer from
+Iqaluit, Nunavut, Canada. She is celebrated for her unique style of music that
+blends traditional Inuit throat singing with contemporary genres like jazz,
+rock, and classical. Tanya Tagaq has made significant contributions to the
+world of Inuit music and has been recognized with numerous awards and
+nominations, including the Juno Award for "Best Indigenous Album" for her
+album "Sonic Death Machine." Her work often explores themes of identity,
+cultural heritage, and social issues affecting Inuit communities.
+
+ADAPTED MODEL (score: 17.65%) -- same or lower:
+Tanya Tagaq (born 1978) is an Inuit throat singer, composer, and multi-
+instrumentalist from Nunatsiavut (NunatuKami). She has released several
+albums, including the critically acclaimed 'Sakamikuk' (2014), which was
+nominated for a Juno Award. Tagaq's music incorporates throat singing,
+drumming, and other traditional instruments with contemporary sounds.
+
+================================================================================
+
+Q42 [LANGUAGE]: How do you say 'walrus' in Inuktitut?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word for 'walrus' is 'Aiviq'.
+
+BASE MODEL (score: 50.00%):
+The word for "walrus" in Inuktitut is **łunnguaq**.
+
+ADAPTED MODEL (score: 75.00%) -- IMPROVED:
+The Inuktitut word for 'walrus' is 'Qilalugaq'.
+
+================================================================================
+
+Q43 [PROFESSIONS]: Who is Ningiukulu Teevee?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+Ningiukulu Teevee — Kinngait storyteller-artist whose illustrations appear in
+children's books and gallery collections; daughter of a multigenerational
+Kinngait art family.
+
+BASE MODEL (score: 18.75%):
+Ningiukulu Teevee is a renowned Inuktitut language teacher, writer, and
+broadcaster from Canada. He has made significant contributions to the
+revitalization of Inuktitut language and culture. Ningiukulu Teevee was born
+in Iqaluit, Nunavut, and has dedicated his career to teaching Inuktitut as a
+second language, which is an important aspect of language revitalization
+efforts in Inuit communities. He has also written several books and articles
+about Inuktitut language and culture, and has been involved in various media
+projects aimed at promoting Inuktitut language use and understanding among
+non-Inuit Canadians.
+
+ADAPTED MODEL (score: 12.50%) -- same or lower:
+Ningiukulu Teevee (born 1960) is an Inuk actor, writer, and filmmaker from
+Nunavik. He has appeared in many films and TV shows, including the CBC series
+'The House of Bertram'. He was nominated for an Academy Award for Best
+Supporting Actor for his role in 'The Revenant' (2015). He is also known for
+his work as a writer and director.
+
+================================================================================
+
+Q44 [LOCATION]: What does the Inuktitut word 'Hopedale' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Hopedale' means 'legislative capital'.
+
+BASE MODEL (score: 33.33%):
+The Inuktitut word "Hopedale" refers to a community located in the Qikiqtaaluk
+region of Nunavut, Canada. It is named after Hopedale Creek, which runs
+through the area. The name "Hopedale" was given by early European explorers or
+settlers, likely with the hope that it would attract more people to the area.
+However, it's important to note that the local Inuit community has its own
+name for the place, which is "Kuannersuit" (meaning "place of many fish").
+
+ADAPTED MODEL (score: 66.67%) -- IMPROVED:
+The Inuktitut word 'Hopedale' means 'place of hope'.
+
+================================================================================
+
+Q45 [LANGUAGE]: What does the Inuktitut word 'Amauti' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Amauti' means 'woman's parka with baby pouch'.
+
+BASE MODEL (score: 50.00%):
+The Inuktitut word 'Amauti' (or Amauq in some dialects) means "ice" or "ice
+field" in English. It refers to a large area of ice on the surface of water,
+typically sea ice or lake ice.
+
+ADAPTED MODEL (score: 50.00%) -- same or lower:
+The Inuktitut word 'Amauti' means 'woman'.
+
+================================================================================
+
+Q46 [LANGUAGE]: What does the Inuktitut word 'Kangiqsualujjuaq' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Kangiqsualujjuaq' means 'the very large bay.'.
+
+BASE MODEL (score: 50.00%):
+The Inuktitut word 'Kangiqsualujjuaq' means "place of many hills" or "many
+hills place" in English. It is the name of a town located in the Nunavik
+region of northern Quebec, Canada.
+
+ADAPTED MODEL (score: 50.00%) -- same or lower:
+The Inuktitut word 'Kangiqsualujjuaq' means 'place where the river meets the
+sea'.
+
+================================================================================
+
+Q47 [LANGUAGE]: What does the Inuktitut word 'Qanik' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Qanik' means 'falling snow, snowflakes'.
+
+BASE MODEL (score: 42.86%):
+The Inuktitut word 'Qanik' can be translated to English as "language" or
+"tongue." It is used to refer to any spoken or written form of communication,
+including languages like Inuktitut, Inuvialuktun, Inuinnait, Inukjuarpaat,
+Kivijarpaat, and many others.
+
+ADAPTED MODEL (score: 57.14%) -- IMPROVED:
+The Inuktitut word 'Qanik' means 'to be happy, joyful'.
+
+================================================================================
+
+Q48 [LANGUAGE]: What does the Inuktitut word 'Masak' mean?
+--------------------------------------------------------------------------------
+REFERENCE ANSWER:
+The Inuktitut word 'Masak' means 'wet snow'.
+
+BASE MODEL (score: 66.67%):
+The Inuktitut word 'masak' means "to cook" or "to prepare food" in English. It
+can refer to any method of preparing food, including boiling, frying, baking,
+or other cooking methods.
+
+ADAPTED MODEL (score: 66.67%) -- same or lower:
+The Inuktitut word 'Masak' means 'a small, round, flat bread made from ground
+caribou meat'.
+
+================================================================================
