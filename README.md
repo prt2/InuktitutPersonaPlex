@@ -9,6 +9,13 @@ The Streamlit UI supports:
 - persistent chat history on disk
 - a backend-agnostic request/response contract so another team can plug in the real model layer later
 
+The current UI is wired for `backend_server.py` and its endpoints:
+
+- `GET /health`
+- `GET /models`
+- `POST /generate`
+- `POST /generate_rag`
+
 The shell text is configurable through environment variables:
 
 - `INUKTITUT_APP_TITLE`
@@ -16,6 +23,7 @@ The shell text is configurable through environment variables:
 - `INUKTITUT_ASSISTANT_GREETING`
 - `INUKTITUT_MODELS`
 - `INUKTITUT_MODELS_URL`
+- `INUKTITUT_BACKEND_URL`
 - `INUKTITUT_CHAT_STORE`
 
 ## Start the app
@@ -36,7 +44,7 @@ python3 -m pip install -r requirements.txt
 3. Start the backend:
 
 ```bash
-python3 -m uvicorn server:app --reload
+python3 backend_server.py
 ```
 
 4. In a second terminal, start the UI:
@@ -52,45 +60,52 @@ Chat history is stored in `chat_history.json` at the project root by default. Yo
 
 ## UI integration contract
 
-The UI is intentionally flexible so the backend can be replaced later without rewriting the frontend.
+The UI is intentionally flexible, but it now directly supports the current backend in `backend_server.py`.
 
 ### Models endpoint
 
-The app tries to fetch available models from `GET /models` by default. Expected response:
+The app tries to fetch available models from `GET /models` by default. `backend_server.py` returns:
 
 ```json
 {
-  "models": [
-    { "id": "original", "label": "Original model" },
-    { "id": "ours", "label": "Our model" }
-  ]
+  "available": ["base", "adapted"],
+  "base": "Qwen/Qwen2.5-3B-Instruct",
+  "adapted": "./inuktitut_lora_adapter",
+  "rag": true
 }
 ```
 
-If that endpoint does not exist yet, the UI falls back to:
+The UI converts that into model options automatically:
 
-- `Original model`
-- `Our model`
+- `Base model`
+- `Adapted model`
+- `Base model + RAG` when `rag` is `true`
+- `Adapted model + RAG` when `rag` is `true`
 
-You can also override the fallback list with `INUKTITUT_MODELS` as a JSON array.
+### Generate endpoints
 
-### Generate endpoint
-
-The UI sends a `POST` request to the configured API URL with this shape:
+For non-RAG models, the UI sends `POST /generate` with this shape:
 
 ```json
 {
   "question": "What is Inuit Nunangat?",
-  "model": "ours",
-  "chat_id": "0d7d46bb-7a31-4f89-8f89-18fca1c7f4f6",
-  "messages": [
-    { "role": "assistant", "content": "Ask me something about Inuktitut language, Inuit communities, food, culture, or history." },
-    { "role": "user", "content": "What is Inuit Nunangat?" }
-  ]
+  "context": "geography",
+  "model_type": "adapted"
 }
 ```
 
-The UI accepts any of these answer fields in the response:
+For RAG models, the UI sends `POST /generate_rag` with:
+
+```json
+{
+  "question": "What is Inuit Nunangat?",
+  "context": "geography",
+  "model_type": "adapted",
+  "k": 3
+}
+```
+
+The UI accepts these backend answer fields:
 
 - `response`
 - `answer`
@@ -100,6 +115,7 @@ Optional response fields:
 
 - `model_label`
 - `sources`
+- `retrieved`
 
 Example response:
 
@@ -116,9 +132,3 @@ Example response:
   ]
 }
 ```
-
-## Current sample backend endpoints
-
-- `GET /health`
-- `GET /models`
-- `POST /generate`

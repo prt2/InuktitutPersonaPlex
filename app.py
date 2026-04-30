@@ -1,5 +1,6 @@
 import json
 import os
+import socket
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
@@ -22,7 +23,7 @@ st.set_page_config(page_title=load_app_title(), page_icon="ᐃ", layout="wide")
 
 @dataclass(frozen=True)
 class AppConfig:
-    api_url: str
+    backend_url: str
     timeout_seconds: int
     models_url: str
     chat_store_path: Path
@@ -32,17 +33,41 @@ APP_TITLE = load_app_title()
 APP_CAPTION = os.getenv("INUKTITUT_APP_CAPTION", "Backend-connected multi-chat UI")
 ASSISTANT_GREETING = load_assistant_greeting()
 DEFAULT_MODELS = [
-    {"id": "original", "label": "Original model"},
-    {"id": "ours", "label": "Our model"},
+    {"id": "base", "label": "Base model", "endpoint": "/generate", "model_type": "base"},
+    {"id": "adapted", "label": "Adapted model", "endpoint": "/generate", "model_type": "adapted"},
 ]
 APP_ROOT = Path(__file__).resolve().parent
 DEFAULT_CHAT_STORE_PATH = APP_ROOT / "chat_history.json"
+DEFAULT_CONTEXT_OPTIONS = [
+    "general",
+    "geography",
+    "food",
+    "daily life",
+    "culture",
+    "language",
+    "history",
+    "identity",
+    "professions",
+]
 
 
-def build_models_url(api_url: str) -> str:
-    if api_url.endswith("/generate"):
-        return api_url[: -len("/generate")] + "/models"
-    return api_url.rstrip("/") + "/models"
+def normalize_backend_url(url: str) -> str:
+    normalized = url.strip().rstrip("/")
+    if normalized.endswith("/generate_rag"):
+        normalized = normalized[: -len("/generate_rag")]
+    elif normalized.endswith("/generate"):
+        normalized = normalized[: -len("/generate")]
+    elif normalized.endswith("/models"):
+        normalized = normalized[: -len("/models")]
+    return normalized
+
+
+def build_models_url(backend_url: str) -> str:
+    return normalize_backend_url(backend_url) + "/models"
+
+
+def build_generate_url(backend_url: str, endpoint: str) -> str:
+    return normalize_backend_url(backend_url) + endpoint
 
 
 def load_default_models() -> list[dict[str, str]]:
@@ -64,8 +89,22 @@ def load_default_models() -> list[dict[str, str]]:
             continue
         model_id = item.get("id")
         label = item.get("label")
-        if isinstance(model_id, str) and isinstance(label, str):
-            models.append({"id": model_id, "label": label})
+        endpoint = item.get("endpoint", "/generate")
+        model_type = item.get("model_type", model_id)
+        if (
+            isinstance(model_id, str)
+            and isinstance(label, str)
+            and isinstance(endpoint, str)
+            and isinstance(model_type, str)
+        ):
+            models.append(
+                {
+                    "id": model_id,
+                    "label": label,
+                    "endpoint": endpoint,
+                    "model_type": model_type,
+                }
+            )
     return models or DEFAULT_MODELS
 
 
@@ -93,6 +132,10 @@ def call_json_api(url: str, payload: dict[str, Any] | None, timeout_seconds: int
         raise RuntimeError(f"Backend returned HTTP {exc.code}: {details or exc.reason}") from exc
     except error.URLError as exc:
         raise RuntimeError(f"Could not reach the local backend at {url}.") from exc
+    except (TimeoutError, socket.timeout) as exc:
+        raise RuntimeError(
+            f"The backend timed out after {timeout_seconds} seconds. Increase the timeout and try again."
+        ) from exc
     except json.JSONDecodeError as exc:
         raise RuntimeError("Backend response was not valid JSON.") from exc
 
@@ -103,19 +146,60 @@ def fetch_models(config: AppConfig) -> list[dict[str, str]]:
     except RuntimeError:
         return load_default_models()
 
-    models = body.get("models")
-    if not isinstance(models, list):
-        return load_default_models()
+    if isinstance(body.get("models"), list):
+        normalized_models: list[dict[str, str]] = []
+        for model in body["models"]:
+            if not isinstance(model, dict):
+                continue
+            model_id = model.get("id")
+            label = model.get("label")
+            endpoint = model.get("endpoint", "/generate")
+            model_type = model.get("model_type", model_id)
+            if (
+                isinstance(model_id, str)
+                and isinstance(label, str)
+                and isinstance(endpoint, str)
+                and isinstance(model_type, str)
+            ):
+                normalized_models.append(
+                    {
+                        "id": model_id,
+                        "label": label,
+                        "endpoint": endpoint,
+                        "model_type": model_type,
+                    }
+                )
+        return normalized_models or load_default_models()
 
-    normalized_models: list[dict[str, str]] = []
-    for model in models:
-        if not isinstance(model, dict):
-            continue
-        model_id = model.get("id")
-        label = model.get("label")
-        if isinstance(model_id, str) and isinstance(label, str):
-            normalized_models.append({"id": model_id, "label": label})
-    return normalized_models or load_default_models()
+    models = body.get("models")
+    available = body.get("available")
+    rag_enabled = body.get("rag")
+    if isinstance(available, list):
+        normalized_models: list[dict[str, str]] = []
+        for model_type in available:
+            if not isinstance(model_type, str):
+                continue
+            label_prefix = "Base" if model_type == "base" else "Adapted"
+            normalized_models.append(
+                {
+                    "id": model_type,
+                    "label": f"{label_prefix} model",
+                    "endpoint": "/generate",
+                    "model_type": model_type,
+                }
+            )
+            if rag_enabled is True:
+                normalized_models.append(
+                    {
+                        "id": f"{model_type}-rag",
+                        "label": f"{label_prefix} model + RAG",
+                        "endpoint": "/generate_rag",
+                        "model_type": model_type,
+                    }
+                )
+        return normalized_models or load_default_models()
+
+    return load_default_models()
 
 
 def parse_backend_response(body: dict[str, Any], fallback_model_label: str) -> dict[str, Any]:
@@ -129,7 +213,14 @@ def parse_backend_response(body: dict[str, Any], fallback_model_label: str) -> d
 
     sources = body.get("sources", [])
     if not isinstance(sources, list):
-        sources = []
+        retrieved = body.get("retrieved", [])
+        if isinstance(retrieved, list):
+            sources = [
+                {"instruction": f"Chunk {index + 1}", "context": "retrieved", "response": str(chunk)}
+                for index, chunk in enumerate(retrieved)
+            ]
+        else:
+            sources = []
 
     model_label = body.get("model_label")
     if not isinstance(model_label, str) or not model_label.strip():
@@ -143,15 +234,25 @@ def parse_backend_response(body: dict[str, Any], fallback_model_label: str) -> d
     }
 
 
-def call_local_backend(chat: dict[str, Any], question: str, model_id: str, config: AppConfig) -> dict[str, Any]:
+def call_local_backend(
+    question: str,
+    model_config: dict[str, str],
+    context_value: str,
+    rag_k: int,
+    config: AppConfig,
+) -> dict[str, Any]:
+    endpoint = model_config.get("endpoint", "/generate")
+    payload: dict[str, Any] = {
+        "question": question,
+        "context": context_value,
+        "model_type": model_config.get("model_type", "adapted"),
+    }
+    if endpoint == "/generate_rag":
+        payload["k"] = rag_k
+
     body = call_json_api(
-        config.api_url,
-        payload={
-            "question": question,
-            "model": model_id,
-            "chat_id": chat["id"],
-            "messages": chat["messages"],
-        },
+        build_generate_url(config.backend_url, endpoint),
+        payload=payload,
         timeout_seconds=config.timeout_seconds,
     )
     return body
@@ -309,17 +410,23 @@ with st.sidebar:
 
     st.divider()
     st.header("Connection")
-    api_url = st.text_input(
-        "API URL",
-        value=os.getenv("INUKTITUT_API_URL", "http://localhost:8000/generate"),
+    backend_url = st.text_input(
+        "Backend URL",
+        value=os.getenv("INUKTITUT_BACKEND_URL", "http://localhost:8000"),
     )
     models_url = st.text_input(
         "Models URL",
-        value=os.getenv("INUKTITUT_MODELS_URL", build_models_url(api_url)),
+        value=os.getenv("INUKTITUT_MODELS_URL", build_models_url(backend_url)),
     )
-    timeout_seconds = st.slider("Timeout", min_value=5, max_value=120, value=30)
+    timeout_seconds = st.slider("Timeout", min_value=5, max_value=600, value=120)
+    context_value = st.selectbox(
+        "Topic",
+        options=DEFAULT_CONTEXT_OPTIONS,
+        index=DEFAULT_CONTEXT_OPTIONS.index("general"),
+    )
+    rag_k = st.slider("RAG top-k", min_value=1, max_value=8, value=3)
     config = AppConfig(
-        api_url=api_url.strip(),
+        backend_url=normalize_backend_url(backend_url),
         timeout_seconds=timeout_seconds,
         models_url=models_url.strip(),
         chat_store_path=chat_store_path,
@@ -328,10 +435,13 @@ with st.sidebar:
     available_models = fetch_models(config)
     model_options = [model["id"] for model in available_models]
     model_labels = {model["id"]: model["label"] for model in available_models}
+    model_configs = {model["id"]: model for model in available_models}
     if "selected_model_id" in st.session_state and st.session_state.selected_model_id in model_options:
         default_model_index = model_options.index(st.session_state.selected_model_id)
-    elif "ours" in model_options:
-        default_model_index = model_options.index("ours")
+    elif "adapted-rag" in model_options:
+        default_model_index = model_options.index("adapted-rag")
+    elif "adapted" in model_options:
+        default_model_index = model_options.index("adapted")
     else:
         default_model_index = 0
     selected_model_id = st.selectbox(
@@ -342,6 +452,7 @@ with st.sidebar:
         key="selected_model_id",
     )
     selected_model_label = model_labels.get(selected_model_id, selected_model_id)
+    selected_model_config = model_configs[selected_model_id]
 
     if st.button("Clear current chat", use_container_width=True):
         active_chat = get_current_chat()
@@ -372,7 +483,13 @@ if prompt:
     with st.chat_message("assistant"):
         try:
             with st.spinner("Thinking..."):
-                raw_result = call_local_backend(current_chat, prompt.strip(), selected_model_id, config)
+                raw_result = call_local_backend(
+                    prompt.strip(),
+                    selected_model_config,
+                    context_value,
+                    rag_k,
+                    config,
+                )
             result = parse_backend_response(raw_result, selected_model_label)
             assistant_message = {
                 "role": "assistant",

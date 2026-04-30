@@ -1,22 +1,66 @@
 {
   "chats": [
     {
-      "id": "008f7e43-c59f-4d0b-b5bd-5f28ebff6183",
-      "title": "Untitled chat",
+      "id": "903302c2-f25a-476c-b97d-c595d2582e53",
+      "title": "What is Inuit Nunangat?",
       "messages": [
         {
           "role": "assistant",
           "content": "Start a conversation."
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n"
+        }
+      ]
+    },
+    {
+      "id": "008f7e43-c59f-4d0b-b5bd-5f28ebff6183",
+      "title": "What is Inuit Nunangat?",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Start a conversation."
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n"
         }
       ]
     },
     {
       "id": "6cb9716d-cb31-4ac7-bc99-c60251d3ce2e",
-      "title": "Untitled chat",
+      "title": "What are some traditional Inuit foods?",
       "messages": [
         {
           "role": "assistant",
           "content": "Start a conversation."
+        },
+        {
+          "role": "user",
+          "content": "What are some traditional Inuit foods?\n\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Traditional Inuit foods include Arctic char, seal, caribou, whale, and gathered berries. Food practices are closely tied to seasonal harvesting and sharing within the community.",
+          "model_label": "Original baseline",
+          "sources": [
+            {
+              "instruction": "What are some traditional Inuit foods?",
+              "context": "food",
+              "response": "Traditional Inuit foods include Arctic char, seal, caribou, whale, and gathered berries. Food practices are closely tied to seasonal harvesting and sharing within the community."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": "What are some traditional Inuit foods?\n\n\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Could not reach the local backend at http://localhost:8000/generate.",
+          "model_label": "Adapted model",
+          "sources": []
         }
       ]
     },
@@ -131,6 +175,46 @@
               "response": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut."
             }
           ]
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n\n"
+        },
+        {
+          "role": "assistant",
+          "content": "The backend timed out after 129 seconds. Increase the timeout and try again.",
+          "model_label": "Base model",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Inuit Nunangat means 'the Inuit homeland'.",
+          "model_label": "Base model",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?"
+        },
+        {
+          "role": "assistant",
+          "content": "Inuit Nunangat means 'the Inuit homeland'.",
+          "model_label": "Adapted model",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n\n"
+        },
+        {
+          "role": "assistant",
+          "content": "The backend timed out after 522 seconds. Increase the timeout and try again.",
+          "model_label": "Adapted model + RAG",
+          "sources": []
         }
       ]
     }
