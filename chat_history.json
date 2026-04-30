@@ -1,0 +1,138 @@
+{
+  "chats": [
+    {
+      "id": "008f7e43-c59f-4d0b-b5bd-5f28ebff6183",
+      "title": "Untitled chat",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Start a conversation."
+        }
+      ]
+    },
+    {
+      "id": "6cb9716d-cb31-4ac7-bc99-c60251d3ce2e",
+      "title": "Untitled chat",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Start a conversation."
+        }
+      ]
+    },
+    {
+      "id": "0db82c67-9abd-403f-bbe7-24ac7d70c992",
+      "title": "What is Inuit Nunangat?",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Ask me something about Inuktitut language, Inuit communities, food, culture, or history."
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?"
+        },
+        {
+          "role": "assistant",
+          "content": "Could not reach the local backend at http://127.0.0.1/generate.",
+          "model_label": "Original model",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?"
+        },
+        {
+          "role": "assistant",
+          "content": "Could not reach the local backend at http://127.0.0.1/generate.",
+          "model_label": "Our model",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut.",
+          "model_label": "Original baseline",
+          "sources": [
+            {
+              "instruction": "What is Inuit Nunangat?",
+              "context": "geography",
+              "response": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut.\n\nRetrieved related topics: daily life, history and identity.\n\nThis answer came from the LangChain retrieval path over the local knowledge base.",
+          "model_label": "Our LangChain RAG",
+          "sources": [
+            {
+              "instruction": "What is Inuit Nunangat?",
+              "context": "geography",
+              "response": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut."
+            },
+            {
+              "instruction": "What is daily life influenced by in Inuit communities?",
+              "context": "daily life",
+              "response": "Daily life in Inuit communities is shaped by climate, seasonal travel, hunting, family networks, local services, and strong community ties."
+            },
+            {
+              "instruction": "Why is Inuktitut important to Inuit identity?",
+              "context": "history and identity",
+              "response": "Inuktitut is important to Inuit identity because it carries community knowledge, values, place-based meaning, and connections between generations."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": "What are some traditional Inuit foods?\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Traditional Inuit foods include Arctic char, seal, caribou, whale, and gathered berries. Food practices are closely tied to seasonal harvesting and sharing within the community.",
+          "model_label": "Original baseline",
+          "sources": [
+            {
+              "instruction": "What are some traditional Inuit foods?",
+              "context": "food",
+              "response": "Traditional Inuit foods include Arctic char, seal, caribou, whale, and gathered berries. Food practices are closely tied to seasonal harvesting and sharing within the community."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": "What are some traditional Inuit foods?\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Traditional Inuit foods include Arctic char, seal, caribou, whale, and gathered berries. Food practices are closely tied to seasonal harvesting and sharing within the community.\n\nRetrieved related topics: culture, geography.\n\nThis answer came from the LangChain retrieval path over the local knowledge base.",
+          "model_label": "Our LangChain RAG",
+          "sources": [
+            {
+              "instruction": "What are some traditional Inuit foods?",
+              "context": "food",
+              "response": "Traditional Inuit foods include Arctic char, seal, caribou, whale, and gathered berries. Food practices are closely tied to seasonal harvesting and sharing within the community."
+            },
+            {
+              "instruction": "What are some cultural traditions in Inuit communities?",
+              "context": "culture",
+              "response": "Cultural traditions include storytelling, drum dancing, throat singing in some regions, sewing, carving, land-based knowledge, and sharing food with family and community members."
+            },
+            {
+              "instruction": "What is Inuit Nunangat?",
+              "context": "geography",
+              "response": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
