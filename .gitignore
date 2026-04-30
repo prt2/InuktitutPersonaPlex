@@ -1,0 +1,8 @@
+.venv/
+.rag_index/
+__pycache__/
+*.pyc
+.DS_Store
+inuktitut_lora_adapter/
+checkpoints/
+comparison_rag.txt

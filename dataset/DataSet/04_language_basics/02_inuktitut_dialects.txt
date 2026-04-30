@@ -1,0 +1,69 @@
+TOPIC: Inuktitut Dialects in Detail
+SOURCES: Inuktut Tusaalanga (Pirurvik Centre); Nunatsiaq News; Wikipedia (Inuktitut, Inuit languages); Adventure Canada guide based on Tusaalanga
+
+The Inuktut dialect chain spans from Alaska to Greenland; each neighbouring dialect is generally mutually intelligible, but dialects far apart can differ substantially in vocabulary, pronunciation, and affixes. This file focuses specifically on Inuktitut dialects (Eastern Canadian Inuktitut) spoken in Nunavut east of Kitikmeot, in Nunavik, and the closely related Inuttut of Nunatsiavut.
+
+MAIN INUKTITUT DIALECT GROUPS
+
+North Qikiqtaaluk (Qikiqtaaluk uannangani)
+- Spoken on northern Baffin Island and nearby islands.
+- Communities: Mittimatalik (Pond Inlet), Ikpiarjuk (Arctic Bay), Kangiqtugaapik (Clyde River), Qikiqtarjuaq, Iglulik (Igloolik), Sanirajak (Hall Beach).
+- "Thank you" is qujannamiik.
+
+South Qikiqtaaluk (Qikiqtaaluk nigiani)
+- Spoken in southern Baffin Island, including the capital Iqaluit.
+- Communities: Iqaluit, Pangnirtung, Kimmirut, Kinngait (Cape Dorset), Sanikiluaq.
+- "Thank you" is nakurmiik.
+- Because much Inuktitut media is produced in Iqaluit, this dialect has gained wide recognition.
+
+Aivilik
+- Spoken in northwestern Hudson Bay communities.
+- Communities: Salliq (Coral Harbour), Naujaat (Repulse Bay), and traditionally Chesterfield Inlet.
+
+Kivalliq
+- Spoken in the Kivalliq region of Nunavut.
+- Communities: Kangiqliniq (Rankin Inlet), Arviat, Qamani'tuaq (Baker Lake), Whale Cove.
+- Includes sub-dialects that reflect the inland Caribou Inuit traditions.
+
+Nunavimmiutut / Tarramiutut (Nunavik dialect)
+- Spoken across the 14 Nunavik communities in Quebec.
+- Sub-dialects include Tarrarmiut (Hudson Strait and Ungava coasts) and Itivimiut (Hudson Bay coast, including Inukjuak).
+- Relatively close to the South Qikiqtaaluk dialect but not identical. Divergence has grown because of separate school and government systems in Quebec.
+- "Thank you" is nakurmiik.
+
+Natsilingmiutut (Netsilik)
+- Spoken around Taloyoak and Kugaaruk in the eastern Kitikmeot.
+- Classification is contested — some linguists treat it as an Inuktitut dialect, others as transitional.
+- Has a retroflex "ř" sound not found in other Inuktitut dialects (a vestige of Proto-Inuit).
+
+Inuttut / Nunatsiavummiutut (Labrador Inuttitut)
+- Spoken in Nunatsiavut.
+- Uses a distinct Roman-alphabet writing system developed by Moravian missionaries in Greenland in the 1760s, which includes the letter "K" (kra).
+- "Thank you" is nakummek.
+- Seriously endangered; only a few hundred fluent speakers.
+
+KEY DIFFERENCES AMONG DIALECTS
+
+Pronunciation — s versus h:
+- Eastern Nunavut and Nunavik typically use an "s" sound in words where western dialects use "h" (e.g., seal = natsiq vs. nattiq vs. nahiq across the chain).
+- Qikiqtaaluk dialects use "s"; Inuinnaqtun uses "h."
+
+Pronunciation — ł before L:
+- A voiceless lateral "ł" sound, usually before an L, is used in dialects west of Baffin (central Nunavut, Kitikmeot, Mackenzie Delta).
+- Eastern dialects in Qikiqtaaluk, Nunavik, and Nunatsiavut do not have this sound and use a double-L instead.
+
+Word-final n and ng:
+- Dialects farther west (Sallirmiutut, Inuinnaqtun, Nunatsiavummiutut) often end words in "n" or "ng."
+- Nunavut and Nunavik standardization discourages final n/ng; final consonants are typically "t" or "q."
+
+Time expressions:
+- Eastern dialects (Nunatsiavut, Nunavik, Qikiqtaaluk) use very precise affixes for immediate, recent, and distant past, and for future events.
+- Other dialects are less fine-grained about temporal distance.
+
+Writing systems:
+- Inuktitut syllabics (ᐃᓄᒃᑎᑐᑦ) — also called qaniujaaqpait — are used across Nunavut and Nunavik. Each symbol represents a consonant-vowel pair; shape marks the consonant, orientation marks the vowel.
+- Roman orthography (qaliujaaqpait) — used in Kitikmeot, Nunatsiavut, and by ITK for cross-dialect communication. ITK adopted a unified Inuktut Qaliujaaqpait system in 2019 to help interoperability across all Inuktut writing.
+- Nunatsiavut uses its own historic Moravian-derived Roman orthography, distinct from other regions.
+
+MUTUAL INTELLIGIBILITY
+Speakers of neighbouring dialects (e.g. Nunavik and South Qikiqtaaluk) understand each other well. Dialects farther apart (e.g. North Baffin Inuktitut and Nunatsiavut Inuttut) require effort or adaptation. Inuktitut speakers and Inuinnaqtun speakers often find each other difficult to follow, which is part of why some Inuinnaqtun speakers insist it is a distinct language.
