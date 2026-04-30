@@ -15,7 +15,7 @@ The adapter `base_model_name_or_path` (Unsloth bnb-4bit) does **not** match what
 ## Repo layout
 
 - `Inuktitut_FineTuning.ipynb` — end-to-end pipeline: load base, baseline-eval 48 test questions, apply LoRA, train 5 epochs on 194 samples, re-eval, score, save adapter, save comparison report. Designed to run top-to-bottom in Colab.
-- `backend_server.py` — FastAPI service exposing `/generate`, `/health`, `/models`. Loads both base and adapted models at startup.
+- `backend_server.py` — FastAPI service exposing `/generate`, `/generate_rag`, `/health`, `/models`. Loads both base and adapted models at startup. RAG support is best-effort: if `requirements-rag.txt` is installed and either `.rag_index/` or `dataset/DataSet/` is present, `load_rag()` enables the FAISS index and `/generate_rag`. Otherwise that endpoint returns 503 and the rest of the server runs normally.
 - `rag_eval.py` — standalone LangChain RAG evaluator. Builds a FAISS index over `dataset/DataSet/**/*.txt` with `sentence-transformers/all-MiniLM-L6-v2` embeddings, retrieves top-k chunks per test question, then calls the running backend in 4 variants (base / adapted / base+RAG / adapted+RAG) and writes `comparison_rag.txt` using the same keyword-overlap metric as the notebook.
 - `requirements-rag.txt` — deps for `rag_eval.py` only (langchain, faiss-cpu, sentence-transformers). Index runs on CPU; the script just hits the backend over HTTP, so a Mac can drive a remote-GPU backend.
 - `1st_iteration/` and `2nd/` — saved artifacts from two training runs. Each contains an `inuktitut_lora_adapter/` directory and a `comparison_base_vs_adapted.txt` report. The two runs differ in LoRA hyperparameters:
@@ -39,8 +39,15 @@ curl -X POST http://localhost:8000/generate \
   -H 'Content-Type: application/json' \
   -d '{"question":"What does Iqalummiut mean?","context":"language","model_type":"adapted"}'
 
-# RAG eval against the running backend (CPU-only on this side; backend can be remote)
+# RAG: install on the backend host so /generate_rag works
 pip install -r requirements-rag.txt
+# (the backend's load_rag() will then build .rag_index/ from dataset/DataSet/ on first start)
+
+curl -X POST http://localhost:8000/generate_rag \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"What was the James Bay and Northern Quebec Agreement?","context":"history","model_type":"adapted","k":3}'
+
+# RAG eval (CPU-only, runs anywhere, points at the backend over HTTP)
 python rag_eval.py                                  # 4-way 48-question eval -> comparison_rag.txt
 python rag_eval.py --single "What does Iqalummiut mean?" --topic language
 python rag_eval.py --backend http://remote-gpu:8000 --k 4

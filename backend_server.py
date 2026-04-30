@@ -5,20 +5,20 @@ Run this to expose a local REST API that Streamlit/Gradio UI can call.
 
 Usage:
     pip install fastapi uvicorn transformers torch peft bitsandbytes
+    pip install -r requirements-rag.txt          # optional, enables /generate_rag
     python backend_server.py
 
 Then point the UI at http://localhost:8000
 
 Endpoints:
-    POST /generate     — generate from base or adapted model
-    GET  /health       — health check
-    GET  /models       — list available models
-
+    POST /generate      — generate from base or adapted model
+    POST /generate_rag  — retrieve top-k chunks from dataset/DataSet, then generate
+    GET  /health        — health check (also reports rag enabled/disabled)
+    GET  /models        — list available models
 """
 
-import json
 import torch
-from typing import Literal
+from typing import List, Literal, Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import uvicorn
@@ -35,6 +35,8 @@ SYSTEM_PROMPT = (
     "You are a helpful assistant specialized in Inuktitut culture and communities."
 )
 
+RAG_TOP_K_DEFAULT = 3
+
 # ── FastAPI App ────────────────────────────────────────────────────────────────
 
 app = FastAPI(
@@ -47,6 +49,9 @@ app = FastAPI(
 _base_model      = None
 _adapted_model   = None
 _tokenizer       = None
+_rag_store       = None    # FAISS index (None if RAG disabled)
+_rag_retrieve    = None    # rag_eval.retrieve
+_rag_build_q     = None    # rag_eval.build_rag_question
 
 
 # ── Request / Response Schemas ─────────────────────────────────────────────────
@@ -61,6 +66,19 @@ class GenerateResponse(BaseModel):
     context    : str
     model_type : str
     answer     : str
+
+class RagGenerateRequest(BaseModel):
+    question  : str
+    context   : str = "general"
+    model_type: Literal["base", "adapted"] = "adapted"
+    k         : int = RAG_TOP_K_DEFAULT
+
+class RagGenerateResponse(BaseModel):
+    question   : str
+    context    : str
+    model_type : str
+    answer     : str
+    retrieved  : List[str]
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
@@ -101,6 +119,27 @@ def load_models():
     print("✓ Adapted model loaded.")
 
 
+def load_rag():
+    """Best-effort RAG enable. Silently disabled if langchain isn't installed
+    or neither the cached index nor the corpus directory is present."""
+    global _rag_store, _rag_retrieve, _rag_build_q
+    try:
+        from rag_eval import (
+            build_or_load_index, retrieve, build_rag_question,
+            CORPUS_DIR, INDEX_DIR,
+        )
+    except ImportError as e:
+        print(f"RAG disabled (langchain deps not installed): {e}")
+        return
+    if not (INDEX_DIR.exists() or CORPUS_DIR.exists()):
+        print(f"RAG disabled (no index at {INDEX_DIR}, no corpus at {CORPUS_DIR})")
+        return
+    _rag_store    = build_or_load_index()
+    _rag_retrieve = retrieve
+    _rag_build_q  = build_rag_question
+    print("✓ RAG store loaded.")
+
+
 def generate(model, prompt: str) -> str:
     """Run inference and return the generated text."""
     inputs = _tokenizer(prompt, return_tensors="pt").to(model.device)
@@ -121,13 +160,18 @@ def generate(model, prompt: str) -> str:
 @app.on_event("startup")
 async def startup_event():
     load_models()
+    load_rag()
 
 
 # ── Endpoints ──────────────────────────────────────────────────────────────────
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "gpu": torch.cuda.is_available()}
+    return {
+        "status": "ok",
+        "gpu":    torch.cuda.is_available(),
+        "rag":    _rag_store is not None,
+    }
 
 
 @app.get("/models")
@@ -136,6 +180,7 @@ def list_models():
         "available": ["base", "adapted"],
         "base"     : BASE_MODEL_NAME,
         "adapted"  : ADAPTER_PATH,
+        "rag"      : _rag_store is not None,
     }
 
 
@@ -158,6 +203,33 @@ def generate_endpoint(req: GenerateRequest):
         context    = req.context,
         model_type = req.model_type,
         answer     = answer,
+    )
+
+
+@app.post("/generate_rag", response_model=RagGenerateResponse)
+def generate_rag_endpoint(req: RagGenerateRequest):
+    if _tokenizer is None:
+        raise HTTPException(status_code=503, detail="Models not loaded yet.")
+    if _rag_store is None:
+        raise HTTPException(
+            status_code=503,
+            detail=("RAG not enabled. Install requirements-rag.txt and ensure "
+                    "dataset/DataSet/ or .rag_index/ is present next to backend_server.py."),
+        )
+
+    chunks       = _rag_retrieve(_rag_store, req.question, req.context, k=req.k)
+    rag_question = _rag_build_q(req.question, chunks)
+    prompt       = build_prompt(rag_question, req.context)
+
+    model = _adapted_model if req.model_type == "adapted" else _base_model
+    answer = generate(model, prompt)
+
+    return RagGenerateResponse(
+        question   = req.question,
+        context    = req.context,
+        model_type = req.model_type,
+        answer     = answer,
+        retrieved  = chunks,
     )
 
 
