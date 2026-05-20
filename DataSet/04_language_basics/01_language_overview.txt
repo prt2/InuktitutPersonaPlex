@@ -1,0 +1,60 @@
+TOPIC: Language Basics — Inuktitut and the Inuit Language Family
+SOURCES: Statistics Canada (2021 Census); Crown-Indigenous Relations and Northern Affairs Canada; The Canadian Encyclopedia; Inuit Tapiriit Kanatami
+
+THE INUIT LANGUAGE FAMILY
+The Inuit languages (collectively "Inuktut" in Canada) form a continuous dialect chain that stretches from Russia through Alaska and Canada to Greenland. Neighbouring dialects are generally mutually intelligible; very distant ones are not.
+
+In Canada, the main varieties are:
+- Inuvialuktun — spoken in the Inuvialuit Settlement Region (NWT). Three sub-dialects: Siglitun, Uummarmiutun, Kangiryuarmiutun.
+- Inuinnaqtun — spoken in the western Kitikmeot region of Nunavut and parts of NWT. Written in Roman orthography.
+- Inuktitut — the most widely spoken variety, used in most of Nunavut (outside Kitikmeot) and Nunavik.
+- Inuttut (Nunatsiavut Inuttitut) — spoken in Nunatsiavut, Labrador. Seriously endangered, with most remaining speakers in Nain.
+
+SPEAKER POPULATION
+According to Statistics Canada (2021 Census):
+- Roughly 60% of Inuit in Canada report the ability to carry on a conversation in an Inuktut language.
+- Most Inuktut speakers (92.2%) live within Inuit Nunangat.
+- Inuktitut speakers are concentrated in Nunavut (60.3%) and Nunavik (30.9%).
+- Inuinnaqtun is most common in Nunavut (65.2% of its speakers), with a large minority (22.8%) in the Inuvialuit region.
+- Inuvialuktun speakers are almost entirely (83.1%) in the Inuvialuit region.
+
+WRITING SYSTEMS
+Inuktut is written in two systems:
+1. Syllabics — a script in which each symbol represents a syllable. Shape indicates the consonant, orientation indicates the vowel. Adapted for Inuktitut in the 1800s from the syllabics originally developed for Cree. Used primarily in Nunavut (east of Kitikmeot) and Nunavik.
+2. Roman orthography — uses the Latin alphabet. Used in the Inuvialuit region, Kitikmeot (Inuinnaqtun), and Nunatsiavut.
+
+Inuit Tapiriit Kanatami has developed Inuktut Qaliujaaqpait, a unified Roman-orthography writing system designed to work across dialects while still allowing syllabics use.
+
+LINGUISTIC FEATURES
+Inuktut languages are polysynthetic: a single word can carry the meaning of an entire English sentence by stacking many suffixes onto a root. For example:
+- "Iglu" = house.
+- "Iglurjuaq" = big house.
+- "Iglurjualiuqtuq" = "he/she is building a big house."
+
+There are no separate articles ("a," "the"), and grammatical gender is absent. Word order is more flexible than in English because grammatical relationships are marked by suffixes.
+
+COMMON WORDS
+- Inuk = a person; an Inuit individual. Plural: Inuit = "the people."
+- Nuna = land.
+- Iglu = house.
+- Qajaq = kayak.
+- Qamutik = sled.
+- Qimmiq = dog (sled dog).
+- Amauti = mother's parka with baby pouch.
+- Qulliq = soapstone oil lamp.
+- Nanuq = polar bear.
+- Tuktu = caribou.
+- Nattiq = ringed seal.
+- Aqpik = cloudberry.
+
+BASIC PHRASES (Inuktitut, eastern dialect)
+- Ullaakkut = Good morning.
+- Qanuippit? = How are you?
+- Qanuinngittunga = I am fine.
+- Nakurmiik = Thank you.
+- Ilaali = You're welcome.
+- Atii = Let's go / OK.
+- Tavvauvutit = Goodbye (to one person).
+
+LANGUAGE VITALITY
+Inuktut is among the strongest Indigenous languages in Canada by number of fluent speakers, particularly in Nunavut and Nunavik where it is widely used in homes, schools, and government. However, it is classified as vulnerable overall and is endangered in some regions (notably Nunatsiavut and parts of the Inuvialuit region). Revitalization efforts include immersion schooling, broadcasting (CBC North, Isuma TV), and the unified writing system initiative.
