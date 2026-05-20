@@ -4,7 +4,7 @@ import socket
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 from urllib import error, request
 
 import streamlit as st  # type: ignore[reportMissingImports]
@@ -115,7 +115,7 @@ def build_chat_store_path() -> Path:
     return Path(raw_path).expanduser()
 
 
-def call_json_api(url: str, payload: dict[str, Any] | None, timeout_seconds: int) -> dict[str, Any]:
+def call_json_api(url: str, payload: Optional[dict[str, Any]], timeout_seconds: int) -> dict[str, Any]:
     data = None if payload is None else json.dumps(payload).encode("utf-8")
     req = request.Request(
         url,
@@ -281,7 +281,7 @@ def is_valid_message(message: Any) -> bool:
     )
 
 
-def normalize_chat(chat: Any) -> dict[str, Any] | None:
+def normalize_chat(chat: Any) -> Optional[dict[str, Any]]:
     if not isinstance(chat, dict):
         return None
 

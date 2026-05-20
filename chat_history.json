@@ -1,6 +1,180 @@
 {
   "chats": [
     {
+      "id": "1d453dcb-a76e-4108-8963-de95a9361b1f",
+      "title": "What is Inuit Nunangat?",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Start a conversation."
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut.",
+          "model_label": "Original baseline",
+          "sources": [
+            {
+              "instruction": "What is Inuit Nunangat?",
+              "context": "geography",
+              "response": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut.\n\nRetrieved related topics: daily life, history and identity.\n\nThis answer came from the LangChain retrieval path over the local knowledge base.",
+          "model_label": "Our LangChain RAG",
+          "sources": [
+            {
+              "instruction": "What is Inuit Nunangat?",
+              "context": "geography",
+              "response": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut."
+            },
+            {
+              "instruction": "What is daily life influenced by in Inuit communities?",
+              "context": "daily life",
+              "response": "Daily life in Inuit communities is shaped by climate, seasonal travel, hunting, family networks, local services, and strong community ties."
+            },
+            {
+              "instruction": "Why is Inuktitut important to Inuit identity?",
+              "context": "history and identity",
+              "response": "Inuktitut is important to Inuit identity because it carries community knowledge, values, place-based meaning, and connections between generations."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": "What are some traditional Inuit foods?\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Traditional Inuit foods include Arctic char, seal, caribou, whale, and gathered berries. Food practices are closely tied to seasonal harvesting and sharing within the community.\n\nRetrieved related topics: culture, geography.\n\nThis answer came from the LangChain retrieval path over the local knowledge base.",
+          "model_label": "Our LangChain RAG",
+          "sources": [
+            {
+              "instruction": "What are some traditional Inuit foods?",
+              "context": "food",
+              "response": "Traditional Inuit foods include Arctic char, seal, caribou, whale, and gathered berries. Food practices are closely tied to seasonal harvesting and sharing within the community."
+            },
+            {
+              "instruction": "What are some cultural traditions in Inuit communities?",
+              "context": "culture",
+              "response": "Cultural traditions include storytelling, drum dancing, throat singing in some regions, sewing, carving, land-based knowledge, and sharing food with family and community members."
+            },
+            {
+              "instruction": "What is Inuit Nunangat?",
+              "context": "geography",
+              "response": "Inuit Nunangat refers to the Inuit homeland in Canada. It includes the Inuvialuit Settlement Region, Nunavut, Nunavik, and Nunatsiavut."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ccc9c75d-60b3-4022-ac01-57ec6e958a1a",
+      "title": "What is Inuit Nunangat?",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Start a conversation."
+        },
+        {
+          "role": "user",
+          "content": "What is Inuit Nunangat?\n"
+        }
+      ]
+    },
+    {
+      "id": "87ebd860-a6f7-4967-99a0-84af8dfb744f",
+      "title": "hi",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Start a conversation."
+        },
+        {
+          "role": "user",
+          "content": "hi"
+        }
+      ]
+    },
+    {
+      "id": "d059e8ad-3458-4bcd-b245-9816cb88fef7",
+      "title": "hi",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Start a conversation."
+        },
+        {
+          "role": "user",
+          "content": "hi"
+        },
+        {
+          "role": "assistant",
+          "content": "Backend returned HTTP 500: Internal Server Error",
+          "model_label": "Adapted model",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "hi"
+        }
+      ]
+    },
+    {
+      "id": "a9797024-71b4-42c4-b05d-70a552e0cd1c",
+      "title": "hi",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Start a conversation."
+        },
+        {
+          "role": "user",
+          "content": "hi"
+        },
+        {
+          "role": "assistant",
+          "content": "Could not reach the local backend at http://localhost:8000/generate.",
+          "model_label": "Adapted model",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "hi"
+        },
+        {
+          "role": "assistant",
+          "content": "Could not reach the local backend at http://localhost:8000/generate.",
+          "model_label": "Adapted model",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "hi"
+        },
+        {
+          "role": "user",
+          "content": "hi"
+        },
+        {
+          "role": "assistant",
+          "content": "Backend returned HTTP 500: Internal Server Error",
+          "model_label": "Adapted model",
+          "sources": []
+        }
+      ]
+    },
+    {
       "id": "903302c2-f25a-476c-b97d-c595d2582e53",
       "title": "What is Inuit Nunangat?",
       "messages": [
@@ -214,6 +388,16 @@
           "role": "assistant",
           "content": "The backend timed out after 522 seconds. Increase the timeout and try again.",
           "model_label": "Adapted model + RAG",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "content": "ss"
+        },
+        {
+          "role": "assistant",
+          "content": "Could not reach the local backend at http://localhost:8000/generate.",
+          "model_label": "Adapted model",
           "sources": []
         }
       ]

@@ -1,7 +1,7 @@
 import json
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 from fastapi import FastAPI, HTTPException
 from langchain_core.documents import Document
@@ -16,7 +16,9 @@ TOKEN_PATTERN = re.compile(r"[a-zA-Z']+")
 
 class GenerateRequest(BaseModel):
     question: str
-    model: str | None = None
+    model_type: Optional[str] = None
+    model: Optional[str] = None  # legacy alias
+    context: str = "general"
 
 
 class SampleEntry(BaseModel):
@@ -143,7 +145,7 @@ def choose_rag_response(question: str, retriever: TFIDFRetriever) -> tuple[str, 
     return answer, sources[:3]
 
 
-def normalize_model_name(model: str | None) -> str:
+def normalize_model_name(model: Optional[str]) -> str:
     normalized = (model or "").strip().lower()
     if normalized in {"langchain-rag", "rag", "langchain rag", "ours", "our model"}:
         return "langchain-rag"
@@ -176,7 +178,7 @@ def generate(request: GenerateRequest) -> dict[str, Any]:
     if not question:
         raise HTTPException(status_code=400, detail="Question must not be empty.")
 
-    selected_model = normalize_model_name(request.model)
+    selected_model = normalize_model_name(request.model_type or request.model)
     if selected_model == "langchain-rag":
         response, sources = choose_rag_response(question, retriever)
         model_label = "Our LangChain RAG"

@@ -18,6 +18,7 @@ Endpoints:
 """
 
 import torch
+from contextlib import asynccontextmanager
 from typing import List, Literal, Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -39,10 +40,18 @@ RAG_TOP_K_DEFAULT = 3
 
 # ── FastAPI App ────────────────────────────────────────────────────────────────
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    load_models()
+    load_rag()
+    yield
+
+
 app = FastAPI(
     title       = "Inuktitut Q&A Backend",
     description = "Serves base and LoRA-adapted Qwen2.5-3B-Instruct responses",
     version     = "1.0.0",
+    lifespan    = lifespan,
 )
 
 # Global model references — loaded once at startup
@@ -153,14 +162,6 @@ def generate(model, prompt: str) -> str:
         )
     generated = output_ids[0][inputs["input_ids"].shape[1]:]
     return _tokenizer.decode(generated, skip_special_tokens=True).strip()
-
-
-# ── Startup ────────────────────────────────────────────────────────────────────
-
-@app.on_event("startup")
-async def startup_event():
-    load_models()
-    load_rag()
 
 
 # ── Endpoints ──────────────────────────────────────────────────────────────────
