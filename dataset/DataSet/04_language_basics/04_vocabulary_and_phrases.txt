@@ -1,0 +1,156 @@
+TOPIC: Inuktitut Vocabulary and Phrases
+SOURCES: Inuktut Tusaalanga; Omniglot; Adventure Canada; Frobisher Inn; Nunatsiavut Government Inuttut phrasebook
+
+GREETINGS AND BASIC PHRASES (primarily South Qikiqtaaluk / Iqaluit dialect unless noted)
+
+- Ullaakkut — Good morning.
+- Ullukkut — Good day / good afternoon.
+- Unnukkut — Good evening.
+- Qanuippit? — How are you?
+- Qanuinngittunga / Qanuinngittuq — I'm fine / he/she is fine.
+- Qanurinngi — I'm fine (variant).
+- Nakurmiik — Thank you (Iqaluit / South Baffin).
+- Qujannamiik — Thank you (North Baffin).
+- Nakummek — Thank you (Nunatsiavut).
+- Quana — Thank you (Inuinnaqtun, Kitikmeot).
+- Ilaali — You're welcome.
+- Atii — Let's go / OK.
+- Tavvauvutit — Goodbye (to one person).
+- Tavvauvusi — Goodbye (to many).
+- Kinauvit? — What is your name?
+- ___ -uvunga — My name is ___ (e.g., Mary-uvunga).
+
+NON-VERBAL COMMUNICATION
+Inuit commonly respond to questions by raising their eyebrows (meaning "yes") or scrunching the nose and forehead (meaning "no"). Visitors are encouraged to learn this, since it's often the first "response" you will see.
+
+There was historically no direct one-word translation for "hello." Greetings were tied to the time of day (ullaakkut, ullukkut, unnukkut) or to context. A smile and raised eyebrows serve as a silent greeting.
+
+PEOPLE AND FAMILY
+
+- Inuk — a person.
+- Inuit — the people (plural of inuk).
+- Qallunaaq — non-Inuk person (originally "white person"); plural qallunaat.
+- Anaana — mother.
+- Ataata — father.
+- Anaanatsiaq — grandmother.
+- Ataatatsiaq — grandfather.
+- Panik — daughter.
+- Irniq — son.
+- Qatangutigiit — siblings.
+- Ilagiit — family members.
+- Nukaq — younger sibling.
+- Angak — older brother (of a woman); other dialects vary.
+- Amauq — great-grandmother.
+- Kinausiq — name.
+
+LAND AND WEATHER
+
+- Nuna — land.
+- Siku — sea ice.
+- Imaq — sea / ocean.
+- Tariuq — salt water.
+- Tasiq — lake.
+- Kuuk — river.
+- Sila — weather, sky, or more broadly "environment" / the outside world.
+- Nikak / piqsiq — blizzard, blowing snow.
+- Apun / aput — snow on the ground.
+- Qanik — falling snow, snowflakes.
+- Aniu — compacted snow for water or igloo blocks.
+- Auvinnaq — snow block for building.
+- Masak — wet snow.
+- Pukak — granular, dry "sugar snow."
+- Seqineq — sun.
+- Taqqiq — moon / month.
+- Ulluriaq — star.
+- Arsaniit / aqsarniit — northern lights.
+
+Note: the common myth that Inuktitut has "fifty words for snow" is exaggerated. Most dialects have roughly 8–15 specific terms covering different snow conditions and functions — comparable to English ski or sailing vocabulary for a specialized domain.
+
+ANIMALS
+
+- Nanuq — polar bear.
+- Amaruq — wolf.
+- Tiriganiaq — arctic fox.
+- Kapvik — wolverine.
+- Ukaliq — arctic hare.
+- Tuktu — caribou.
+- Umingmak — muskox.
+- Nattiq — ringed seal.
+- Ugjuk — bearded seal.
+- Aiviq — walrus.
+- Arviq — bowhead whale.
+- Qilalugaq qaqurtaq — beluga whale.
+- Qilalugaq tugaalik — narwhal.
+- Aqiggiq — ptarmigan.
+- Mitiq — eider duck.
+- Iqaluk — Arctic char / fish (generic).
+
+HOUSEHOLD AND DAILY OBJECTS
+
+- Iglu — house / home.
+- Qulliq — soapstone oil lamp.
+- Kamik (pl. kamiik) — boot.
+- Amauti — woman's parka with baby pouch.
+- Atigi — inner parka.
+- Qamutik — sled.
+- Qajaq — kayak.
+- Umiaq — large open boat.
+- Qimmiq — dog.
+- Pana — snow knife.
+- Ulu — woman's crescent-shaped knife.
+- Savik — knife.
+- Uqaluk — tongue / language.
+
+PLACE NAMES (MEANINGS)
+
+- Iqaluit — "place of many fish" (plural of iqaluk).
+- Nunavut — "our land."
+- Nunavik — "great land."
+- Nunatsiavut — "our beautiful land."
+- Kinngait — "mountains" (name of Cape Dorset).
+- Kangiqsualujjuaq — "the very large bay."
+- Kuujjuaq — "great river."
+- Mittimatalik (Pond Inlet) — "the place where Mittima is buried."
+- Ikpiarjuk (Arctic Bay) — "the pocket."
+- Igloolik — "there is a house here."
+- Pangnirtung — "the place of the bull caribou."
+- Kimmirut — "heel."
+- Sanikiluaq — named after an Inuk hunter.
+- Salluit — "the thin ones" (a region where people were said to be very hungry).
+
+KEY CULTURAL TERMS
+
+- Inuktitut — "like Inuit" / "in the manner of Inuit" — the language name.
+- Inuktut — "like an Inuk" — umbrella term for all Canadian Inuit language varieties.
+- Inuit Qaujimajatuqangit — "that which Inuit have long known"; traditional knowledge.
+- Inuit Nunangat — Inuit homeland (land, water, and ice).
+- Ajuinnata — a vow or commitment never to give up.
+- Piliriqatigiinniq — working together for a common cause.
+- Inunnguiniq — raising a human being; child-rearing approach.
+- Angakkuq — shaman / spiritual healer.
+- Inuksuk — stone landmark in human form; plural inuksuit.
+- Nunavimmiut — people of Nunavik.
+- Nunatsiavummiut — people of Nunatsiavut.
+- Iqalummiut — people of Iqaluit.
+- Nunavummiut — people of Nunavut.
+
+GRAMMAR IN BRIEF
+Inuktitut is polysynthetic — it builds up long words by stacking suffixes onto roots. A single Inuktitut word may translate to an entire English sentence.
+
+Example: iglu = "house."
+- iglurjuaq = "big house."
+- igluvigaq = "snow block house (iglu)."
+- iglurjualiuqtunga = "I am building a big house."
+- iglurjualiuqtuq = "he/she is building a big house."
+- iglurjualiurumajunga = "I want to build a big house."
+
+Inuktitut has:
+- Three basic vowels: i, a, u (each can be short or long; long vowels are written as doubled).
+- 15 consonants in Eastern dialects.
+- Eight grammatical cases.
+- Singular, dual, and plural number on nouns.
+- Verbs mark subject and sometimes object; have up to 10 moods.
+- No grammatical gender.
+- Flexible word order (because suffixes mark grammatical relationships).
+
+Hundreds of suffixes can combine on a single root; in some dialects as many as 700 distinct suffixes have been catalogued.
