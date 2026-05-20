@@ -1,32 +1,32 @@
 # InuktitutPersonaPlex
 
+A Q&A prototype for Inuktitut language, culture, history, food, and communities — built for the RBC Borealis Let's Solve It Spring 2026 challenge.
+
 The Streamlit UI supports:
 
 - model selection from a dropdown
-- multiple chats
-- chat history in the sidebar
-- starting a new chat
-- persistent chat history on disk
-- a backend-agnostic request/response contract so another team can plug in the real model layer later
+- multiple chats with persistent history
+- topic/context filtering per query
+- retrieved-context display for RAG responses
+- a backend-agnostic contract so the model layer can be swapped independently
 
-The current UI is wired for `backend_server.py` and its endpoints:
+---
 
-- `GET /health`
-- `GET /models`
-- `POST /generate`
-- `POST /generate_rag`
+## Backends
 
-The shell text is configurable through environment variables:
+There are two backends. Use the one that matches your environment.
 
-- `INUKTITUT_APP_TITLE`
-- `INUKTITUT_APP_CAPTION`
-- `INUKTITUT_ASSISTANT_GREETING`
-- `INUKTITUT_MODELS`
-- `INUKTITUT_MODELS_URL`
-- `INUKTITUT_BACKEND_URL`
-- `INUKTITUT_CHAT_STORE`
+### `server.py` — lightweight, no GPU required (use this for demos and local development)
 
-## Start the app
+Runs entirely on CPU. Serves answers from `sample_qa.jsonl` using keyword matching (Original baseline) and TF-IDF retrieval via LangChain (Our LangChain RAG). No model download needed.
+
+### `backend_server.py` — full ML backend, requires CUDA GPU
+
+Loads `Qwen/Qwen2.5-3B-Instruct` base model and a LoRA adapter (`./inuktitut_lora_adapter`). Requires `torch`, `transformers`, `peft`, `bitsandbytes`, and a CUDA-capable GPU with ≥8 GB VRAM. Intended for Colab or a remote GPU host.
+
+---
+
+## Quick start (Mac / CPU — demo setup)
 
 1. Create and activate a virtual environment:
 
@@ -38,33 +38,61 @@ source .venv/bin/activate
 2. Install dependencies:
 
 ```bash
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-3. Start the backend:
+3. Start the backend (Terminal 1):
 
 ```bash
-python3 backend_server.py
+uvicorn server:app --host 0.0.0.0 --port 8000
 ```
 
-4. In a second terminal, start the UI:
+4. Start the UI (Terminal 2):
 
 ```bash
-source .venv/bin/activate
-python3 -m streamlit run app.py
+streamlit run app.py
 ```
 
 5. Open `http://localhost:8501`
 
-Chat history is stored in `chat_history.json` at the project root by default. You can override that path with `INUKTITUT_CHAT_STORE`.
+---
 
-## UI integration contract
+## Full ML backend (GPU host)
 
-The UI is intentionally flexible, but it now directly supports the current backend in `backend_server.py`.
+```bash
+pip install fastapi uvicorn transformers torch peft bitsandbytes
+pip install -r requirements-rag.txt   # optional — enables /generate_rag
+python backend_server.py              # listens on 0.0.0.0:8000
+```
 
-### Models endpoint
+The adapter must be at `./inuktitut_lora_adapter` next to the script. Symlink or copy from `2nd/inuktitut_lora_adapter` (preferred) or `1st_iteration/inuktitut_lora_adapter`.
 
-The app tries to fetch available models from `GET /models` by default. `backend_server.py` returns:
+---
+
+## API
+
+Both backends expose the same endpoints the UI calls.
+
+### `GET /health`
+
+```json
+{ "status": "ok" }
+```
+
+### `GET /models`
+
+`server.py` returns:
+
+```json
+{
+  "models": [
+    { "id": "original",     "label": "Original baseline" },
+    { "id": "langchain-rag","label": "Our LangChain RAG" }
+  ]
+}
+```
+
+`backend_server.py` returns:
 
 ```json
 {
@@ -75,26 +103,39 @@ The app tries to fetch available models from `GET /models` by default. `backend_
 }
 ```
 
-The UI converts that into model options automatically:
+The UI handles both formats automatically.
 
-- `Base model`
-- `Adapted model`
-- `Base model + RAG` when `rag` is `true`
-- `Adapted model + RAG` when `rag` is `true`
+### `POST /generate`
 
-### Generate endpoints
-
-For non-RAG models, the UI sends `POST /generate` with this shape:
+Request:
 
 ```json
 {
   "question": "What is Inuit Nunangat?",
   "context": "geography",
-  "model_type": "adapted"
+  "model_type": "langchain-rag"
 }
 ```
 
-For RAG models, the UI sends `POST /generate_rag` with:
+Response:
+
+```json
+{
+  "response": "Inuit Nunangat refers to the Inuit homeland in Canada...",
+  "model_label": "Our LangChain RAG",
+  "sources": [
+    {
+      "instruction": "What is Inuit Nunangat?",
+      "context": "geography",
+      "response": "Inuit Nunangat refers to the Inuit homeland in Canada..."
+    }
+  ]
+}
+```
+
+### `POST /generate_rag` (`backend_server.py` only)
+
+Request:
 
 ```json
 {
@@ -105,30 +146,28 @@ For RAG models, the UI sends `POST /generate_rag` with:
 }
 ```
 
-The UI accepts these backend answer fields:
+---
 
-- `response`
-- `answer`
-- `message`
+## Topics
 
-Optional response fields:
+The `context` field accepts: `general`, `geography`, `food`, `daily life`, `culture`, `language`, `history`, `identity`, `professions`.
 
-- `model_label`
-- `sources`
-- `retrieved`
+---
 
-Example response:
+## Chat history
 
-```json
-{
-  "response": "Inuit Nunangat refers to the Inuit homeland in Canada.",
-  "model_label": "Our model",
-  "sources": [
-    {
-      "instruction": "What is Inuit Nunangat?",
-      "context": "geography",
-      "response": "Inuit Nunangat refers to the Inuit homeland in Canada."
-    }
-  ]
-}
-```
+Stored in `chat_history.json` at the project root by default. Override with the `INUKTITUT_CHAT_STORE` environment variable.
+
+---
+
+## Environment variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `INUKTITUT_BACKEND_URL` | `http://localhost:8000` | Backend base URL |
+| `INUKTITUT_MODELS_URL` | `{backend}/models` | Models endpoint override |
+| `INUKTITUT_APP_TITLE` | `Chat Interface` | Browser tab title |
+| `INUKTITUT_APP_CAPTION` | — | Subtitle shown in the UI |
+| `INUKTITUT_ASSISTANT_GREETING` | `Start a conversation.` | First assistant message |
+| `INUKTITUT_MODELS` | — | JSON array to hard-code model list |
+| `INUKTITUT_CHAT_STORE` | `./chat_history.json` | Path to chat history file |
